@@ -12,6 +12,8 @@ print("""
 
 	<html>
 		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<title>CMD</title>
 			
 		</head>
@@ -19,12 +21,10 @@ print("""
 		<body>
 			<div class = "form1">
 
-			<form action = '/cgi-bin/titli.py' >
+			<form action = '/cgi-bin/titli.py'>
 
-				<h2 style="color: WHITE">Enter your command here</h2>
-				<input type = 'text' name = 'z' id = 'num1' placeholder = "command"/ >
-				
-				
+				<h2 style="color: WHITE">Enter your command here: </h2>
+				<input type = 'text' name = 'z' id = 'num1' placeholder = "command"/>
 				<input type = 'submit' id = "b2"/>
 			</form>
 
@@ -33,7 +33,6 @@ print("""
 			<style type="text/css">
 				body{ background-color: teal;
 				      color: white;
-				  
  	     			      font-family:Open Sans;
 				    }
 
@@ -58,23 +57,15 @@ print("""
 
 """)
 
-
-
-
-
 data = cgi.FieldStorage()
 u_l = data.getvalue("z")
-
-cmmd = "sudo "+u_l
-
+cmmd = "sudo " + u_l
 
 try:
 	output = subprocess.getoutput(cmmd)
 
 	if "command not found" in output or "Error" in output:
 		print("\n Failed !")
-		print("Error Wrong Command")
-		print("Try again with correct command")
 
 	else:	
 		print("\n")
